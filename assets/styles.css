@@ -490,3 +490,22 @@ form .send-btn:hover {
   }
 }
 
+
+/* Independent Letter Animation */
+.home-text h1 span.animated-letter {
+  display: inline-block;
+  animation: floatLetter 2.5s ease-in-out infinite;
+}
+
+@keyframes floatLetter {
+  0%, 100% {
+    transform: translateY(0);
+    text-shadow: none;
+  }
+  50% {
+    transform: translateY(-15px);
+    color: var(--main-color);
+    text-shadow: 0 0 10px var(--main-color);
+  }
+}
+
