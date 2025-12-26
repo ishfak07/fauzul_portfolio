@@ -466,3 +466,19 @@ i {
     transform: rotate(360deg);
   }
 }
+
+/* Fix Image Positioning */
+.home-img img,
+.about-img img {
+  transform: none !important;
+  position: relative !important;
+}
+
+.home-img,
+.about-img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

@@ -314,7 +314,8 @@ if (form) {
 // ========================
 // PARALLAX EFFECT
 // ========================
-window.addEventListener('scroll', () => {
+// Parallax disabled to fix image positioning
+/* window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
   const parallaxElements = document.querySelectorAll('.home-img img, .about-img img');
   
@@ -322,7 +323,7 @@ window.addEventListener('scroll', () => {
     const speed = 0.5;
     el.style.transform = `translateY(${scrolled * speed}px)`;
   });
-});
+}); */
 
 // ========================
 // TEXT REVEAL ON SCROLL
