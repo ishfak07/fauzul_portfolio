@@ -1,0 +1,76 @@
+/* Modern Contact Section Layout */
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-info-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.info-card {
+  text-align: center;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.info-card h4 {
+  margin: 15px 0 10px 0;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.info-icon {
+  margin: 0 auto 15px;
+  flex-shrink: 0;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-btn {
+  padding: 20px 30px;
+  font-size: 1.1rem;
+  flex: 0 1 auto;
+  min-width: 180px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .contact-info-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .social-buttons {
+    flex-direction: column;
+    max-width: 500px;
+  }
+  
+  .info-card {
+    min-height: auto;
+  }
+}
+
+

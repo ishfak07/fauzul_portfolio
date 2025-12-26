@@ -32,6 +32,7 @@
   <!-- Animation Libraries -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/animations.css">
+  <link rel="stylesheet" href="assets/contact-layout.css">
 
   <title>Fawzul Islam - Portfolio</title>
 </head>
@@ -207,21 +208,54 @@
   <section class="contact" id="contact">
     <div class="contact-center">
       <h3 data-aos="fade-up">Get In Touch</h3>
+      <p data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; margin: -50px auto 40px; font-size: 1.1rem; color: var(--2nd-main-color);">
+        Let's collaborate and create something amazing together. Feel free to reach out!
+      </p>
     </div>
 
-    <div class="contact-info" style="text-align: center; margin-bottom: 30px; color: var(--text-color);" data-aos="fade-up" data-aos-delay="200">
-      <p data-aos="fade-right" data-aos-delay="300"><i class='bx bx-map'></i> Dematagoda, Colombo 09, Sri Lanka.</p>
-      <p data-aos="fade-right" data-aos-delay="400"><i class='bx bx-phone'></i> +94 71 33 66 794</p>
-      <p data-aos="fade-right" data-aos-delay="500"><i class='bx bx-envelope'></i> fauzulislam9460@gmail.com</p>
-    </div>
+    <div class="contact-wrapper">
+      <!-- Contact Info Cards -->
+      <div class="contact-info-cards" data-aos="fade-right" data-aos-delay="200">
+        <div class="info-card" data-aos="flip-up" data-aos-delay="300">
+          <div class="info-icon">
+            <i class='bx bx-map'></i>
+          </div>
+          <h4>Location</h4>
+          <p>Dematagoda, Colombo 09<br>Sri Lanka</p>
+        </div>
 
-    <div class="contact-form" data-aos="fade-up" data-aos-delay="600">
-      <form action="">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Message" required></textarea>
-        <input type="submit" value="Send Message" class="send-btn">
-      </form>
+        <div class="info-card" data-aos="flip-up" data-aos-delay="400">
+          <div class="info-icon">
+            <i class='bx bx-phone'></i>
+          </div>
+          <h4>Phone</h4>
+          <p>+94 71 33 66 794</p>
+        </div>
+
+        <div class="info-card" data-aos="flip-up" data-aos-delay="500">
+          <div class="info-icon">
+            <i class='bx bx-envelope'></i>
+          </div>
+          <h4>Email</h4>
+          <p>fauzulislam9460@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Social Media Buttons -->
+      <div class="social-buttons" data-aos="fade-up" data-aos-delay="600">
+          <a href="https://wa.me/94713366794" target="_blank" class="social-btn whatsapp-btn">
+            <i class='bx bxl-whatsapp'></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/fxwzul?igsh=OWo1eGRwZHFtbXJ5" target="_blank" class="social-btn instagram-btn">
+            <i class='bx bxl-instagram'></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@mr_fawxl?_r=1&_t=ZS-92XbbSPnBlo" target="_blank" class="social-btn tiktok-btn">
+            <i class='bx bxl-tiktok'></i>
+            <span>TikTok</span>
+          </a>
+        </div>
     </div>
   </section>
   <!-- End of Contact Section -->

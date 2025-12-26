@@ -482,3 +482,434 @@ i {
   justify-content: center;
 }
 
+
+/* Enhanced Contact Section Styles */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 50px;
+  align-items: start;
+}
+
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-card {
+  background: rgba(147, 112, 219, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid rgba(147, 112, 219, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #9370DB, #ff6ec4);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.info-card:hover::before {
+  transform: scaleY(1);
+}
+
+.info-card:hover {
+  background: rgba(147, 112, 219, 0.15);
+  border-color: var(--main-color);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(147, 112, 219, 0.3);
+}
+
+.info-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #9370DB, #ff6ec4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(147, 112, 219, 0.4);
+  transition: all 0.3s ease;
+}
+
+.info-card:hover .info-icon {
+  transform: scale(1.1) rotate(360deg);
+}
+
+.info-icon i {
+  font-size: 28px;
+  color: var(--text-color);
+}
+
+.info-card h4 {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.info-card p {
+  color: var(--2nd-main-color);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Modern Form Styles */
+.modern-form {
+  background: rgba(147, 112, 219, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(147, 112, 219, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(147, 112, 219, 0.3);
+  padding: 15px 50px 15px 20px;
+  border-radius: 10px;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--main-color);
+  background: rgba(147, 112, 219, 0.1);
+  box-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+.form-group i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--main-color);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea + i {
+  top: 20px;
+  transform: none;
+}
+
+.form-group input:focus + i,
+.form-group textarea:focus + i {
+  color: #ff6ec4;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.send-btn {
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #9370DB, #ff6ec4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(147, 112, 219, 0.4);
+}
+
+.send-btn:hover {
+  background: linear-gradient(135deg, #ff6ec4, #9370DB);
+  box-shadow: 0 8px 30px rgba(147, 112, 219, 0.6);
+  transform: translateY(-3px);
+}
+
+.send-btn i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.send-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .modern-form {
+    padding: 30px 20px;
+  }
+}
+
+
+/* Social Media Buttons */
+.social-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.social-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.social-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.social-btn i {
+  font-size: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.social-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.instagram-btn {
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+  color: white;
+  box-shadow: 0 5px 20px rgba(131, 58, 180, 0.3);
+}
+
+.instagram-btn::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.instagram-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(131, 58, 180, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Icon Animation on Hover */
+.social-btn:hover i {
+  animation: bounceIcon 0.6s ease;
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .social-buttons {
+    flex-direction: column;
+  }
+}
+
+
+/* TikTok Button */
+.tiktok-btn {
+  background: linear-gradient(135deg, #000000, #ee1d52, #69c9d0);
+  color: white;
+  box-shadow: 0 5px 20px rgba(238, 29, 82, 0.3);
+}
+
+.tiktok-btn::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tiktok-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(238, 29, 82, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Update responsive for 3 buttons */
+@media (max-width: 968px) {
+  .social-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .social-btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .social-buttons {
+    flex-direction: column;
+  }
+  
+  .social-btn {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* Center align contact section */
+.contact-wrapper {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.contact-info-cards {
+  width: 100%;
+  align-items: center;
+}
+
+.info-card {
+  text-align: center;
+}
+
+.social-buttons {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Enhanced Social Media Buttons */
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4), inset 0 -3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6), inset 0 -3px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.05);
+}
+
+.instagram-btn {
+  background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCAF45 100%);
+  box-shadow: 0 8px 25px rgba(253, 29, 29, 0.4), inset 0 -3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.instagram-btn:hover {
+  background: linear-gradient(135deg, #FCAF45 0%, #FD1D1D 50%, #833AB4 100%);
+  box-shadow: 0 12px 35px rgba(253, 29, 29, 0.6), inset 0 -3px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.05);
+}
+
+.tiktok-btn {
+  background: linear-gradient(135deg, #000000 0%, #ee1d52 50%, #69c9d0 100%);
+  box-shadow: 0 8px 25px rgba(238, 29, 82, 0.4), inset 0 -3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tiktok-btn:hover {
+  background: linear-gradient(135deg, #69c9d0 0%, #ee1d52 50%, #000000 100%);
+  box-shadow: 0 12px 35px rgba(238, 29, 82, 0.6), inset 0 -3px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Glowing effect on hover */
+.social-btn:hover {
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+/* Icon bounce animation */
+.social-btn:hover i {
+  animation: icon-bounce 0.6s ease infinite;
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(10deg);
+  }
+}
+
+/* Shine effect */
+.social-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.social-btn:hover::before {
+  left: 100%;
+}
