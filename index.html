@@ -3,253 +3,332 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Fawzul Islam - Portfolio" />
-  <meta property="og:description" content="Aspiring Audit & Finance Professional - Portfolio" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ishfak07.github.io/fauzul_portfolio/" />
-  <meta property="og:image" content="https://ishfak07.github.io/fauzul_portfolio/img/home.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image:alt" content="Fawzul Islam Portfolio">
-  <meta name="twitter:title" content="Fawzul Islam - Portfolio" />
-  <meta name="twitter:description" content="Aspiring Audit & Finance Professional - Portfolio" />
-
-  <!-- Icon -->
-  <link type="image/png" sizes="16x16" rel="icon" href="assets/anime.png">
-  <!-- External CSS Link -->
-  <link rel="stylesheet" type="text/css" href="assets/styles.css">
-
-  <!-- Boxicons Script -->
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-  <!-- Google Fonts Link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Kosugi+Maru&display=swap" rel="stylesheet">
-
-  <!-- Animation Libraries -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/animations.css">
-  <link rel="stylesheet" href="assets/contact-layout.css">
-  <link rel="stylesheet" href="assets/3d-effects.css">
+  <meta name="description" content="Fawzul Islam – Aspiring Audit & Finance Professional. Portfolio showcasing skills, education, and qualifications.">
+  <meta property="og:title" content="Fawzul Islam - Portfolio">
+  <meta property="og:description" content="Aspiring Audit & Finance Professional - Portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ishfak07.github.io/fauzul_portfolio/">
+  <meta property="og:image" content="https://ishfak07.github.io/fauzul_portfolio/img/home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fawzul Islam - Portfolio">
+  <meta name="twitter:description" content="Aspiring Audit & Finance Professional - Portfolio">
 
   <title>Fawzul Islam - Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/home.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <!-- 3D Preloader -->
+
+  <!-- Preloader -->
   <div class="preloader" id="preloader">
-    <div class="preloader-cube">
-      <div class="face front"></div>
-      <div class="face back"></div>
-      <div class="face left"></div>
-      <div class="face right"></div>
-      <div class="face top"></div>
-      <div class="face bottom"></div>
+    <div class="preloader-content">
+      <div class="preloader-cube">
+        <div class="cube-face front"></div>
+        <div class="cube-face back"></div>
+        <div class="cube-face left"></div>
+        <div class="cube-face right"></div>
+        <div class="cube-face top"></div>
+        <div class="cube-face bottom"></div>
+      </div>
+      <p class="preloader-text">Loading</p>
     </div>
   </div>
 
-  <!-- Scroll Progress Bar -->
-  <div id="scroll-progress"></div>
-  
-  <!-- Custom Cursor -->
-  <div class="custom-cursor"></div>
-  <div class="custom-cursor-dot"></div>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- Mouse Follow Light -->
-  <div class="mouse-light" id="mouse-light"></div>
-  
-  <!-- Particles Background -->
-  <div id="particles-js"></div>
-  <!-- Start of Header -->
-  <header>
-    <a href="#" class="logo">Fawzul<span> Islam</span></a>
-    <div class="bx bx-menu" id="menu-icon"></div>
+  <!-- Custom Cursor (desktop) -->
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
 
-    <ul class="navbar">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Three.js Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Header -->
+  <header id="header">
+    <a href="#home" class="logo">
+      <span class="logo-f">F</span><span class="logo-dot">.</span><span class="logo-rest">Islam</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#resume" class="nav-link">Resume</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
-  <!-- End of Header -->
 
-  <!-- Start of Home Section -->
-  <section class="home" id="home">
-    <div class="home-text slide-left-3d" data-aos="fade-right" data-aos-duration="1000">
-      <h5 data-aos="fade-down" data-aos-delay="200">Hello, I'm</h5>
-      <h1 class="glitch" data-text="Fawzul Islam">Fawzul Islam</h1>
-      <h6>an <span id="typed-role"></span></h6>
-      <p data-aos="fade-up" data-aos-delay="600">Handles tasks such as processing invoices, reconciling accounts, preparing financial reports, and ensuring compliance with accounting principles.</p>
-      <a href="Fawzul_CV.pdf" download target="_blank" class="btn" data-aos="zoom-in" data-aos-delay="800">Download CV</a>
-    </div>
-
-    <div class="home-img slide-right-3d" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
-      <img src="img/home.png" alt="anime" class="tilt-effect floating">
-    </div>
-  </section>
-  <!-- End of Home Section -->
-
-  <!-- Start of About Section -->
-  <section class="about" id="about">
-    <div class="about-img slide-left-3d" data-aos="fade-right" data-aos-duration="1000">
-      <img src="img/about.png" alt="Fawzul Islam" class="tilt-effect">
-    </div>
-
-    <div class="about-text slide-right-3d" data-aos="fade-left" data-aos-duration="1000">
-      <h3 data-aos="fade-down">About Me</h3>
-      <h2>Aspiring Audit & Finance Professional</h2>
-      <p>An aspiring audit and finance professional with experience in invoice processing, account reconciliation and basic financial reporting, currently reading for a BA (Hons) in International Business and Finance while progressing through AAT and ACCA qualifications.</p>
-      <p>Strong attention to detail and proficiency in accounting software and MS Office.</p>
-
-      <div class="main-btn">
-        <a href="Fawzul_CV.pdf" download target="_blank" class="btn">Download CV</a>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-name">
+            <span class="name-line">Fawzul</span>
+            <span class="name-line accent">Islam</span>
+          </h1>
+          <p class="hero-role">an <span id="typed-role"></span></p>
+          <p class="hero-desc">Handles tasks such as processing invoices, reconciling accounts, preparing financial reports, and ensuring compliance with accounting principles.</p>
+          <div class="hero-actions">
+            <a href="Fawzul_CV.pdf" download target="_blank" class="btn btn-primary">
+              <i class='bx bx-download'></i> Download CV
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class='bx bx-envelope'></i> Get in Touch
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-wrapper">
+            <img src="img/home.png" alt="Fawzul Islam" width="500" height="500">
+            <div class="image-glow"></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- End of About Section -->
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <p>Scroll Down</p>
+      </div>
+    </section>
 
-  <!-- Start of Skills Section -->
-  <section class="services" id="skills">
-    <div class="center">
-      <h3 data-aos="fade-up">MY SKILLS</h3>
-    </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image reveal-left">
+          <div class="image-wrapper">
+            <img src="img/about.png" alt="Fawzul Islam" width="500" height="500">
+            <div class="image-glow"></div>
+          </div>
+        </div>
+        <div class="about-content reveal-right">
+          <h3 class="about-subtitle">Aspiring Audit & Finance Professional</h3>
+          <p>An aspiring audit and finance professional with experience in invoice processing, account reconciliation and basic financial reporting, currently reading for a BA (Hons) in International Business and Finance while progressing through AAT and ACCA qualifications.</p>
+          <p>Strong attention to detail and proficiency in accounting software and MS Office.</p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Qualifications</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="1">0</span>
+              <span class="stat-label">Gold Medal</span>
+            </div>
+          </div>
+          <a href="Fawzul_CV.pdf" download target="_blank" class="btn btn-primary">
+            <i class='bx bx-download'></i> Download CV
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div class="service-content">
-      <!-- Technical Skills -->
-      <div class="row card-reveal-3d" data-aos="flip-left" data-aos-delay="100">
-        <i class='bx bx-laptop'></i>
-        <h3>Technical / Tools</h3>
-        <p>MS Office (Word, Excel, PowerPoint)</p>
-        <p>Data skills (basic data handling and spreadsheets)</p>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <div class="section-header">
+        <span class="section-tag">What I Offer</span>
+        <h2 class="section-title">My Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card" data-tilt>
+          <div class="skill-icon">
+            <i class='bx bx-laptop'></i>
+          </div>
+          <h3>Technical / Tools</h3>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span>MS Office (Word, Excel, PowerPoint)</li>
+            <li><span class="skill-dot"></span>Data handling & spreadsheets</li>
+            <li><span class="skill-dot"></span>Accounting software</li>
+          </ul>
+        </div>
+
+        <div class="skill-card" data-tilt>
+          <div class="skill-icon">
+            <i class='bx bx-user-check'></i>
+          </div>
+          <h3>Professional Skills</h3>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span>Problem Solving</li>
+            <li><span class="skill-dot"></span>Critical Thinking</li>
+            <li><span class="skill-dot"></span>Leadership & Accountability</li>
+            <li><span class="skill-dot"></span>Creativity & Negotiation</li>
+          </ul>
+        </div>
+
+        <div class="skill-card" data-tilt>
+          <div class="skill-icon">
+            <i class='bx bx-chat'></i>
+          </div>
+          <h3>Languages</h3>
+          <ul class="skill-list">
+            <li>
+              <span class="skill-dot"></span>English – Bilingual
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </li>
+            <li>
+              <span class="skill-dot"></span>Tamil – Native
+              <div class="skill-bar"><div class="skill-fill" data-width="100"></div></div>
+            </li>
+            <li>
+              <span class="skill-dot"></span>Sinhala – Beginner
+              <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+      <div class="cta-content">
+        <h3>Let's make something great together!</h3>
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <i class='bx bx-rocket'></i> Hire Me
+        </a>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+      <div class="section-header">
+        <span class="section-tag">My Journey</span>
+        <h2 class="section-title">Education & Experience</h2>
       </div>
 
-      <!-- Soft Skills -->
-      <div class="row card-reveal-3d" data-aos="flip-left" data-aos-delay="300">
-        <i class='bx bx-user-check'></i>
-        <h3>Professional Skills</h3>
-        <p>Problem solving, Critical thinking, Creativity, Accountability, Negotiation, Leadership</p>
+      <div class="resume-columns">
+        <!-- Education Column -->
+        <div class="resume-column">
+          <h3 class="column-title"><i class='bx bx-book-open'></i> Education & Qualifications</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">Reading (2025)</span>
+                <h4>BA (Hons) International Business and Finance</h4>
+                <p>Imperial College of Business Studies (UWS)</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">Completed 2024</span>
+                <h4>GCE Advanced Level</h4>
+                <p>Dharul Hasnath Academy (DHA), Warakapola</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">Completed 2021</span>
+                <h4>GCE Ordinary Level</h4>
+                <p>Zahira College, Puttalam</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">2024</span>
+                <h4>AAT Sri Lanka – Passed Finalist</h4>
+                <p>Association of Accounting Technicians of Sri Lanka</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">In Progress (2024)</span>
+                <h4>ACCA – Level 2 / Skill Level</h4>
+                <p>Currently Reading</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot achievement"></div>
+              <div class="timeline-card achievement-card" data-tilt>
+                <span class="timeline-date">Achievement</span>
+                <h4><i class='bx bx-medal'></i> Gold Medalist</h4>
+                <p>Achievers Lanka Business School</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Column -->
+        <div class="resume-column">
+          <h3 class="column-title"><i class='bx bx-briefcase'></i> Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card" data-tilt>
+                <span class="timeline-date">Current / Target</span>
+                <h4>Audit Trainee / Assistant Accountant</h4>
+                <ul class="experience-list">
+                  <li>Processed invoices and supported accounts payable/receivable</li>
+                  <li>Assisted in reconciling accounts and preparing basic financial reports</li>
+                  <li>Helped ensure compliance with accounting principles and internal procedures</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">Let's collaborate and create something amazing together. Feel free to reach out!</p>
       </div>
 
-      <!-- Languages -->
-      <div class="row card-reveal-3d" data-aos="flip-left" data-aos-delay="500">
-        <i class='bx bx-chat'></i>
-        <h3>Languages</h3>
-        <p>English – Bilingual proficiency</p>
-        <p>Tamil – Native</p>
-        <p>Sinhala – Beginner</p>
-      </div>
-    </div>
-  </section>
-  <!-- End of Skills Section -->
-
-  <!-- CTA Section -->
-  <section class="cta" data-aos="zoom-in" data-aos-duration="1000">
-    <h4 class="pulse-text">Let's make something great together!</h4>
-    <a href="#" class="btn">Hire Me</a>
-  </section>
-  <!-- End of CTA Section -->
-
-  <!-- Start of Resume Section -->
-  <section class="resume" id="resume">
-    <div class="center">
-      <h3 data-aos="fade-up">Education & Qualifications</h3>
-    </div>
-
-    <div class="resume-content">
-      <!-- Education 01 -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="100">
-        <h6>Reading (2025)</h6>
-        <h4>BA (Hons) International Business and Finance</h4>
-        <p>Imperial College of Business Studies (UWS)</p>
-      </div>
-
-      <!-- Education 02 -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="200">
-        <h6>Completed 2024</h6>
-        <h4>GCE Advanced Level</h4>
-        <p>Dharul Hasnath Academy (DHA), Warakapola</p>
-      </div>
-
-      <!-- Education 03 -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="300">
-        <h6>Completed 2021</h6>
-        <h4>GCE Ordinary Level</h4>
-        <p>Zahira College, Puttalam</p>
-      </div>
-
-      <!-- Professional Qual 01 -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="400">
-        <h6>2024</h6>
-        <h4>AAT Sri Lanka – Passed Finalist</h4>
-        <p>Association of Accounting Technicians of Sri Lanka</p>
-      </div>
-
-      <!-- Professional Qual 02 -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="500">
-        <h6>In Progress (2024)</h6>
-        <h4>ACCA – Level 2 / Skill Level</h4>
-        <p>Reading</p>
-      </div>
-
-      <!-- Achievement -->
-      <div class="box card-reveal-3d" data-aos="fade-up" data-aos-delay="600">
-        <h6>Achievement</h6>
-        <h4>Gold Medalist</h4>
-        <p>Achievers Lanka Business School</p>
-      </div>
-    </div>
-
-    <div class="center" style="margin-top: 50px;">
-      <h3 data-aos="fade-up">Experience</h3>
-    </div>
-
-    <div class="resume-content">
-      <!-- Experience 01 -->
-      <div class="box card-reveal-3d" data-aos="zoom-in" data-aos-delay="200">
-        <h6>Current / Target</h6>
-        <h4>Audit Trainee / Assistant Accountant</h4>
-        <p>Processed invoices and supported accounts payable/receivable.</p>
-        <p>Assisted in reconciling accounts and preparing basic financial reports.</p>
-        <p>Helped ensure compliance with accounting principles and internal procedures.</p>
-      </div>
-    </div>
-  </section>
-  <!-- End of Resume Section -->
-
-  <!-- Start of Contact Section -->
-  <section class="contact" id="contact">
-    <div class="contact-center">
-      <h3 data-aos="fade-up">Get In Touch</h3>
-      <p data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; margin: -50px auto 40px; font-size: 1.1rem; color: var(--2nd-main-color);">
-        Let's collaborate and create something amazing together. Feel free to reach out!
-      </p>
-    </div>
-
-    <div class="contact-wrapper">
-      <!-- Contact Info Cards -->
-      <div class="contact-info-cards" data-aos="fade-right" data-aos-delay="200">
-        <div class="info-card pop-3d" data-aos="flip-up" data-aos-delay="300">
-          <div class="info-icon">
+      <div class="contact-grid">
+        <div class="contact-card" data-tilt>
+          <div class="contact-icon">
             <i class='bx bx-map'></i>
           </div>
           <h4>Location</h4>
           <p>Dematagoda, Colombo 09<br>Sri Lanka</p>
         </div>
 
-        <div class="info-card pop-3d" data-aos="flip-up" data-aos-delay="400">
-          <div class="info-icon">
+        <div class="contact-card" data-tilt>
+          <div class="contact-icon">
             <i class='bx bx-phone'></i>
           </div>
           <h4>Phone</h4>
           <p>+94 71 33 66 794</p>
         </div>
 
-        <div class="info-card pop-3d" data-aos="flip-up" data-aos-delay="500">
-          <div class="info-icon">
+        <div class="contact-card" data-tilt>
+          <div class="contact-icon">
             <i class='bx bx-envelope'></i>
           </div>
           <h4>Email</h4>
@@ -257,40 +336,40 @@
         </div>
       </div>
 
-      <!-- Social Media Buttons -->
-      <div class="social-buttons" data-aos="fade-up" data-aos-delay="600">
-          <a href="https://wa.me/94713366794" target="_blank" class="social-btn whatsapp-btn">
-            <i class='bx bxl-whatsapp'></i>
-            <span>WhatsApp</span>
-          </a>
-          <a href="https://www.instagram.com/fxwzul?igsh=OWo1eGRwZHFtbXJ5" target="_blank" class="social-btn instagram-btn">
-            <i class='bx bxl-instagram'></i>
-            <span>Instagram</span>
-          </a>
-          <a href="https://www.tiktok.com/@mr_fawxl?_r=1&_t=ZS-92XbbSPnBlo" target="_blank" class="social-btn tiktok-btn">
-            <i class='bx bxl-tiktok'></i>
-            <span>TikTok</span>
-          </a>
-        </div>
-    </div>
-  </section>
-  <!-- End of Contact Section -->
+      <div class="social-links">
+        <a href="https://wa.me/94713366794" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+          <i class='bx bxl-whatsapp'></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/fxwzul?igsh=OWo1eGRwZHFtbXJ5" target="_blank" class="social-btn instagram" aria-label="Instagram">
+          <i class='bx bxl-instagram'></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@mr_fawxl?_r=1&_t=ZS-92XbbSPnBlo" target="_blank" class="social-btn tiktok" aria-label="TikTok">
+          <i class='bx bxl-tiktok'></i>
+          <span>TikTok</span>
+        </a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Start of Footer Section -->
-  <div class="footer">
+  <!-- Footer -->
+  <footer class="footer">
     <p>&copy; 2025 • Built with ❤️ by <a href="https://ishfak-r.netlify.app/" target="_blank">Faizul Ishfaque</a></p>
-  </div>
-  <!-- End of Footer Section -->
+  </footer>
 
-  <!-- Animation Libraries -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class='bx bx-up-arrow-alt'></i>
+  </button>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  
-  <!-- JS Script Link -->
-  <script src="assets/script.js"></script>
-  <script src="assets/animations.js"></script>
 
+  <!-- Main Script -->
+  <script src="assets/script.js"></script>
 </body>
 </html>
