@@ -13,6 +13,9 @@
   const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Mark touch devices so CSS can hide custom cursor
+  if (isTouch) document.body.classList.add('touch');
+
   // ========================
   // PRELOADER
   // ========================
@@ -22,6 +25,44 @@
       setTimeout(() => preloader.classList.add('loaded'), 1400);
     }
   });
+
+  // ========================
+  // THEME TOGGLE (Dark / Light)
+  // ========================
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const root = document.documentElement;
+
+  // Restore saved theme
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    if (themeIcon) {
+      themeIcon.classList.remove('bx-moon');
+      themeIcon.classList.add('bx-sun');
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('portfolio-theme', 'light');
+        if (themeIcon) {
+          themeIcon.classList.remove('bx-sun');
+          themeIcon.classList.add('bx-moon');
+        }
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('portfolio-theme', 'dark');
+        if (themeIcon) {
+          themeIcon.classList.remove('bx-moon');
+          themeIcon.classList.add('bx-sun');
+        }
+      }
+    });
+  }
 
   // ========================
   // THREE.JS - 3D BACKGROUND
@@ -69,7 +110,7 @@
         color,
         wireframe: true,
         transparent: true,
-        opacity: 0.15 + Math.random() * 0.25,
+        opacity: 0.12 + Math.random() * 0.18,
       });
 
       const mesh = new THREE.Mesh(geo, mat);
@@ -435,32 +476,51 @@
   if (!isTouch) {
     const ring = document.getElementById('cursorRing');
     const dot = document.getElementById('cursorDot');
+    const glow = document.getElementById('cursorGlow');
 
-    if (ring && dot) {
+    if (ring && dot && glow) {
+      let mouseX = 0, mouseY = 0;
       let ringX = 0, ringY = 0;
-      let dotX = 0, dotY = 0;
+      let glowX = 0, glowY = 0;
 
       document.addEventListener('mousemove', (e) => {
-        dotX = e.clientX;
-        dotY = e.clientY;
-        dot.style.left = dotX + 'px';
-        dot.style.top = dotY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        // Dot snaps immediately
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
       });
 
       function animateCursor() {
-        ringX += (dotX - ringX) * 0.12;
-        ringY += (dotY - ringY) * 0.12;
+        // Ring follows with lag
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
         ring.style.left = ringX + 'px';
         ring.style.top = ringY + 'px';
+
+        // Glow trails even slower
+        glowX += (mouseX - glowX) * 0.06;
+        glowY += (mouseY - glowY) * 0.06;
+        glow.style.left = glowX + 'px';
+        glow.style.top = glowY + 'px';
+
         requestAnimationFrame(animateCursor);
       }
       animateCursor();
 
-      // Hover state
+      // Hover state for all 3 layers
       const hoverElements = document.querySelectorAll('a, button, .btn, .skill-card, .timeline-card, .contact-card, .social-btn');
       hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        el.addEventListener('mouseenter', () => {
+          ring.classList.add('hover');
+          dot.classList.add('hover');
+          glow.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.classList.remove('hover');
+          dot.classList.remove('hover');
+          glow.classList.remove('hover');
+        });
       });
     }
   }
