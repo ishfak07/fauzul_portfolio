@@ -10,14 +10,14 @@
 
 .contact-info-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   width: 100%;
 }
 
 .info-card {
   text-align: center;
-  height: 220px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +41,7 @@
 
 .social-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   max-width: 900px;
   margin: 0 auto;
@@ -50,10 +51,10 @@
 }
 
 .social-btn {
-  padding: 20px 30px;
-  font-size: 1.1rem;
+  padding: 18px 25px;
+  font-size: 1rem;
   flex: 0 1 auto;
-  min-width: 180px;
+  min-width: 160px;
 }
 
 /* Responsive adjustments */
@@ -70,6 +71,27 @@
   
   .info-card {
     min-height: auto;
+  }
+
+  .social-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-wrapper {
+    padding: 0 10px;
+    gap: 2rem;
+  }
+
+  .info-card {
+    padding: 20px 15px;
+  }
+
+  .social-btn {
+    padding: 14px 18px;
+    font-size: 0.9rem;
   }
 }
 

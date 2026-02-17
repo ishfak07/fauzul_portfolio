@@ -337,6 +337,7 @@ img.loaded {
   background: linear-gradient(90deg, #9370DB, #ff6ec4, #00fff9);
   background-size: 200% auto;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s ease infinite;
 }
@@ -468,12 +469,6 @@ i {
 }
 
 /* Fix Image Positioning */
-.home-img img,
-.about-img img {
-  transform: none !important;
-  position: relative !important;
-}
-
 .home-img,
 .about-img {
   position: relative;

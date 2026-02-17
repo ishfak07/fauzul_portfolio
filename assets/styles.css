@@ -14,14 +14,15 @@
   --main-color: #9370DB;
   --2nd-main-color: #ffffffcc;
   --text-color: #fff;
-  --big-font: 5rem;
-  --h2-font: 1.9rem;
-  --p-font: 1rem;
+  --big-font: clamp(2.5rem, 5vw, 5rem);
+  --h2-font: clamp(1.4rem, 2.5vw, 1.9rem);
+  --p-font: clamp(0.875rem, 1.2vw, 1rem);
 }
 
 body {
   background-color: var(--bg--color);
   color: var(--text-color);
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -85,8 +86,9 @@ section {
   grid-gap: 6rem;
   align-items: center;
   position: relative;
-  height: 100vh;
-  width: 100%;  
+  min-height: 100vh;
+  width: 100%;
+  transform-style: preserve-3d;
 }
 
 .home-img img {
@@ -170,9 +172,8 @@ section {
   font-size: var(--h2-font);
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: 0.5rem;
-  max-width: 470;
   margin-bottom: 2rem;
+  max-width: 470px;
 }
 
 .about-text p {
@@ -202,9 +203,9 @@ section {
 
 .service-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 2rem;
-  align-items: center;
+  align-items: stretch;
   margin-top: 4.4rem;
 }
 
@@ -276,9 +277,9 @@ section {
 
 .resume-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 3rem;
-  align-items: center;
+  align-items: stretch;
   margin-top: 4.4rem;
 }
 
@@ -320,13 +321,14 @@ section {
 }
 
 .box:hover {
-  transform: translate(-15px);
+  transform: translateY(-15px);
   box-shadow: 0px 15px 30px 0px rgb(0 0 0 / 70%);
 }
 
 /* Contact Section */
 .contact {
   text-align: center;
+  overflow: hidden;
 }
 
 .contact-center {
@@ -405,50 +407,65 @@ form .send-btn:hover {
 /* Media query for mobile devices with screen size up to 768px */
 @media (max-width: 768px) {
   header {
-    padding: 18px 3%;
+    padding: 15px 4%;
   }
   #menu-icon {
     display: block;
   }
   .navbar {
-    background: #0b0b13;
-    position: absolute;
-    top: -500px;
+    background: rgba(11, 11, 19, 0.98);
+    position: fixed;
+    top: -100vh;
     right: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 15px 30px 0px rgb(0 0 0 / 70%);
-    text-align: left;
-    transition: 0.2s ease;
+    text-align: center;
+    transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 80px 0 30px;
+    height: 100vh;
+    z-index: 10000;
+    justify-content: flex-start;
+    align-items: center;
   }
   .navbar a {
     display: block;
-    margin: 1rem;
-    padding: 1rem;
-    border-left: 2px solid var(--main-color);
+    margin: 0.5rem 0;
+    padding: 15px 30px;
+    border-left: none;
+    font-size: 1.2rem;
   }
   .navbar.active {
-    top: 100%;
+    top: 0;
   }
 
   .home {
     grid-template-columns: 1fr;
     grid-gap: 2rem;
-    margin-top: 80px;
+    margin-top: 0;
     height: auto;
+    min-height: auto;
     text-align: center;
-    padding: 50px 3%;
+    padding: 80px 5% 40px;
+  }
+  .home-text {
+    order: 1;
+  }
+  .home-img {
+    order: 2;
+    display: flex;
+    justify-content: center;
   }
   .home-img img {
-    width: 100%;
+    width: 280px;
     height: auto;
   }
   .home-text h5 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .home-text h1 {
-    font-size: 2.5rem;
+    font-size: var(--big-font);
   }
   .home-text h6 {
     font-size: 14px;
@@ -457,30 +474,35 @@ form .send-btn:hover {
   .about {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 50px 3%;
+    padding: 60px 5%;
   }
-  .about-img-container img {
-    width: 100%;
+  .about-img {
+    display: flex;
+    justify-content: center;
+  }
+  .about-img img {
+    width: 280px;
   }
   .about-text h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
   .about-text h2 {
-    font-size: 1.6rem;
+    font-size: var(--h2-font);
   }
   .about-text p {
-    font-size: 0.9rem;
+    font-size: var(--p-font);
+    max-width: 100%;
   }
   .resume-content {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 2rem;
-    margin-top: 4.4rem;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+    margin-top: 3rem;
   }
   .box h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .box p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
   .box h5 {
     font-size: 12px;
@@ -493,7 +515,12 @@ form .send-btn:hover {
   }
 
   .row {
-    padding: 30px 20px;
+    padding: 40px 25px;
+  }
+
+  .cta {
+    padding: 80px 5%;
+    margin: 50px auto;
   }
 }
 

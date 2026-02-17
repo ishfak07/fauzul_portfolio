@@ -11,16 +11,6 @@ window.onscroll = () => {
   navbar.classList.remove('active');
 };
 
-const sr = ScrollReveal({
-  distance: '60px',
-  duration: 2500,
-  reset: true,
-});
-
-sr.reveal('.home-text', { delay: 200, origin: 'top' });
-sr.reveal('.home-img', { delay: 400, origin: 'top' });
-sr.reveal('.about, .cta, .resume, .contact, .footer', { delay: 200, origin: 'top' });
-
 // Letter Animation Script
 const nameElement = document.querySelector('.home-text h1');
 if (nameElement) {
